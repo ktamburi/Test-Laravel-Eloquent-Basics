@@ -45,7 +45,7 @@ class UserController extends Controller
     {
         // TASK: find a user by $name and update it with $email
         //   if not found, create a user with $name, $email and random password
-        $user = updateOrCreate(
+        $user = User::updateOrCreate(
             ['name' => $name, 'email' => $email],
             ['password' => Hash::make(Str::random(12))]
         ); // updated or created user
@@ -69,7 +69,7 @@ class UserController extends Controller
     {
         // TASK: That "active()" doesn't exist at the moment.
         //   Create this scope to filter "where email_verified_at is not null"
-        
+
         // $users = User::active()->get();
         $users = User::whereNotNull('email_verified_at')->get();
 
