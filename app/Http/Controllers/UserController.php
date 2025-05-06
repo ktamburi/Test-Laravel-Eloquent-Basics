@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         // TASK: find a user by $name and $email
         //   if not found, create a user with $name, $email and random password
-        $user = firstOrCreate(
+        $user = User::firstOrCreate(
             ['name' => $name, 'email' => $email],
             ['password' => Hash::make(Str::random(12))]
         );
